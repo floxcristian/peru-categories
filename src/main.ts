@@ -17,9 +17,7 @@ import { ArticleService } from './article/services/article.service';*/
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const { api, database } = loadConfig();
-
-  console.log('database: ', database);
+  const { api } = loadConfig();
   const { port } = api;
   await app.listen(port);
   const logger = new Logger('Api');

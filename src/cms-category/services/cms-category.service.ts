@@ -16,15 +16,15 @@ export class CmsCategoryService {
 
   async replaceAllFromExcel(): Promise<void> {
     const categories = await this.cmsCategoryExcelService.getCategories(
-      'cms_categories.xlsx',
+      'categorias-peru.xlsx',
     );
     if (!categories.length) return;
-    /*this.logger.log(
+    this.logger.log(
       `Reemplazando todas las categorías en la colección [cms_categories].`,
     );
     await this.cmsCategoryDao.replaceAll(categories);
     this.logger.log(
       `Se han reemplazado todas las categorías en la colección [cms_categories].`,
-    );*/
+    );
   }
 }
