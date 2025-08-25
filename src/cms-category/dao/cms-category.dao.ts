@@ -23,4 +23,9 @@ export class CmsCategoryDao {
     await this.cmsCategoryEntityModel.deleteMany({});
     return this.cmsCategoryEntityModel.insertMany(categories);
   }
+
+  async findBySlug(slug: string): Promise<CmsCategoryEntity | null> {
+    return this.cmsCategoryEntityModel.findOne({ slug }).lean();
+  }
+
 }

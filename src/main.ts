@@ -12,6 +12,7 @@ import {
 /*import { AppService } from './app.service'; // Importamos AppService
 import { CmsCategoryExcelService } from './cms-category/services/excel-cms-category.service';*/
 import { CmsCategoryService } from './cms-category/services/cms-category.service';
+import { SkuCategoryService } from './cms-category/services/sku-category.service';
 /*import { CmsCategoryMenuService } from './cms-category-menu/services/cms-category-menu.service';
 import { ArticleService } from './article/services/article.service';*/
 
@@ -24,11 +25,8 @@ async function bootstrap() {
   logger.log(`🚀 Server is running on port [${port}].`);
 
   // Obtenemos la instancia de AppService del contexto de la aplicación
-  const cmsCategoryService = app.get(CmsCategoryService);
   /*const cmsCategoryMenuService = app.get(CmsCategoryMenuService);
   const articleService = app.get(ArticleService);*/
-  // Llamamos al método replaceAllFromExcel
-  await cmsCategoryService.replaceAllFromExcel();
   /*await cmsCategoryMenuService.replaceAll();
   await cmsCategoryMenuService.getLevel3CategoriesMap();*/
   /*const response =
@@ -36,6 +34,12 @@ async function bootstrap() {
   console.log('Response: ', response);*/
   //console.table(articles);
   //cmsCategoryService.getLevel3CategoriesMap();
+  // Llamamos al método replaceAllFromExcel
+  const cmsCategoryService = app.get(CmsCategoryService);
+  await cmsCategoryService.replaceAllFromExcel();
+  //Llamamos al metodo replaceAllFromExcel de sku categories
+  const skuCategoryService = app.get(SkuCategoryService);
+  await skuCategoryService.replaceAllFromExcel();
 }
 bootstrap().catch((error) => {
   console.error('Failed to start application:', error);
