@@ -10,8 +10,13 @@ export class SkuCategoryDao {
         private skuCategoryEntityModel: Model<SkuCategoryEntity>,
     ) {}
 
+    async getAll(): Promise<SkuCategoryEntity[]> {
+        return this.skuCategoryEntityModel.find().lean();
+    }
+
     async replaceAll(skuCategory:Partial<SkuCategoryEntity>[]){
         await this.skuCategoryEntityModel.deleteMany({});
         return this.skuCategoryEntityModel.insertMany(skuCategory);
     }
+
 }

@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 
 const generateShortId = () => nanoid(8);
 
-@Schema({ collection: 'cms_categories_peru', timestamps: true })
+@Schema({ collection: 'cms_categories', timestamps: true })
 export class CmsCategoryEntity extends Document {
   @Prop({
     type: String,

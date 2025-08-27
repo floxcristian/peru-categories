@@ -11,15 +11,19 @@ import { SkuCategoryEntity, SkuCategorySchema } from './schemas/sku-category.sch
 import { SkuCategoryDao } from './dao/sku-category.dao';
 import { SkuCategoryService } from './services/sku-category.service';
 import { SkuCategoryExcelService } from './services/excel-sku-category.service';
+import { ArticleEntity, ArticleSchema } from './schemas/article.schema';
+import { ArticleDao } from './dao/article.dao';
+import { ArticleService } from './services/article.service';
 
-const DAO = [CmsCategoryDao, SkuCategoryDao];
-const SERVICES = [CmsCategoryExcelService, CmsCategoryService, SkuCategoryService, SkuCategoryExcelService];
+const DAO = [CmsCategoryDao, SkuCategoryDao, ArticleDao];
+const SERVICES = [CmsCategoryExcelService, CmsCategoryService, SkuCategoryService, SkuCategoryExcelService, ArticleService];
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: CmsCategoryEntity.name, schema: CmsCategorySchema },
       { name: SkuCategoryEntity.name, schema: SkuCategorySchema },
+      { name: ArticleEntity.name, schema: ArticleSchema },
     ]),
   ],
   controllers: [],
